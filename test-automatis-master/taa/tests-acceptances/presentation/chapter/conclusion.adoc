@@ -1,0 +1,4 @@
+[data-background="{title_bg}"]
+
+== Q&A
+image::images/question-comments-concerns.jpg[]

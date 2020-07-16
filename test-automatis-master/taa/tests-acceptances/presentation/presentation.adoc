@@ -1,0 +1,17 @@
+= Tests d'acceptance
+ISC France / Expertise iscfrance.expert@sqli.com
+:backend: revealjs
+:cssimagedir: reveal.js/css/theme/image
+:revealjs_theme: sqlislide
+:revealjs_slideNumber: true
+:revealjs_parallaxBackgroundImage: {cssimagedir}/fondnoir.jpg
+:revealjs_parallaxBackgroundSize: cover
+:title_bg: {cssimagedir}/fondmarron.jpg
+
+include::chapter/introduction.adoc[]
+
+include::chapter/scenario-gherkin.adoc[]
+
+include::chapter/scenario-implementation.adoc[]
+
+include::chapter/conclusion.adoc[]

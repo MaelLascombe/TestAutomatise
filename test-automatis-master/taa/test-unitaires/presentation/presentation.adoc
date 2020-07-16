@@ -1,0 +1,25 @@
+= Tests automatisés
+ISC France / Expertise iscfrance.expert@sqli.com
+:backend: revealjs
+:cssimagedir: reveal.js/css/theme/image
+:revealjs_theme: sqlislide
+:revealjs_slideNumber: true
+:revealjs_parallaxBackgroundImage: {cssimagedir}/fondnoir.jpg
+:revealjs_parallaxBackgroundSize: cover
+:title_bg: {cssimagedir}/fondmarron.jpg
+
+include::chapter/introduction.adoc[]
+
+include::chapter/pourquoi.adoc[]
+
+include::chapter/rappels.adoc[]
+
+include::chapter/frameworks.adoc[]
+
+include::chapter/industrialisation.adoc[]
+
+include::chapter/tests-automatises.adoc[]
+
+include::chapter/les-mocks.adoc[]
+
+include::chapter/conclusion.adoc[]

@@ -1,0 +1,27 @@
+[data-background="{title_bg}"]
+== Les frameworks de tests
+
+=== Les frameworks pour les tests unitaires
+
+* JUnit (java)
+* Jasmine (javascript)
+* nUnit (.Net)
+* dUnit (Delphi)
+* cppUnit (C++) etc..
+
+=== Les frameworks pour le mocking
+
+* Mockito (java)
+* Sinon (javascript)
+
+=== Les outils de tests de charge
+
+* JMeter, Gatling
+
+=== Les outils d'analyse de couverture de tests
+
+* cobertura
+
+=== Et bien d'autres
+
+...

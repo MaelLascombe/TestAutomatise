@@ -1,0 +1,41 @@
+
+== Découvrez l’importance des tests
+
+=== Je viens de rework une fonction de 900 lignes sans tests
+
+image::images/pic-feu.jpg[]
+
+=== Coder c'est tester !
+
+* Tester ce n'est pas que vérifier que son application marche!
+** C'est savoir *rapidement* quand l'application ne marche plus
+** *où* dans le code
+** et *pourquoi*
+* Construire sa couverture de tests = construire ses *TNR* (Tests de Non  Régression)
+
+=== Apprendre à coder c'est apprendre à tester
+* Impact sur conception
+* Modularité & testabilité
+
+=== Pratiques XP et TDD
+
+* Pourquoi ?
+** Vérifier la bonne compréhension des fonctionnalités
+** Meilleure couverture de tests automatisés
+** Facilité d’écriture des tests avant le code « métier »
+** Ils servent à promouvoir et vérifier la qualité et la fiabilité du code
+
+=== !
+
+* Comment ?
+** Ecrire d’un test pour une fonctionnalité
+** Le test est « failed »
+** Codage de la fonctionnalité minimale
+** Vérification du cas passant
+** Répéter l’opération en enrichissant la fonctionnalité en refactorisant
+
+=== !
+
+Red / Green / Refactor
+
+image::images/tdd.gif[]

@@ -1,0 +1,125 @@
+
+== Rédiger des scénarios avec Gherkin
+
+=== La syntaxe gherkin
+
+Le Gherkin est une syntaxe utilisée pour faire du BDD (“Behaviour-Driven Development”) en écrivant des scénarios de test compréhensibles par des individus non techniques.
+
+=== Un langage commun
+
+* C'est un langage naturel ce qui simplifie sa compréhension et son utilisation
+* On explique le déroulement d'une fonctionnalité et il existe dans plus de 60 langues
+
+=== Le scénario au coeur du langage Gherkin
+
+* Un scénario est ensuite décrit par un ensemble d'étapes.
+* Chaque étape est introduite par un mot-clé suivi d'un texte libre qui correspond à sa description.
+
+....
+Scenario: eat 5 out of 12
+  Given there are 12 cucumbers
+  When I eat 5 cucumbers
+  Then I should have 7 cucumbers
+....
+
+=== !
+
+Pour alléger la lecture d'un scénario, Gherkin propose deux autres mots clés And et But.
+
+....
+Scenario: Buy last coffee
+  Given there are 1 coffees left in the machine
+  And I have deposited 1$
+  When I press the coffee button
+  Then I should be served a coffee
+....
+
+=== Un exemple en français
+
+....
+Scenario:
+  Etant donné que offrir un gâteau rend heureux
+  Lorsqu' on m'offre 1 gâteau
+  Alors je suis heureux
+....
+
+=== Ecrire un scénario paramétré
+
+* à l'aide du mot clé Scenario Outline on va pouvoir paramétrer de tels scénarii
+* des tableaux d'exemples sont là pour faciliter l'écriture/lecture de ce scénario.
+
+* Remarques :
+** Un même scénario paramétré peut être composé de plusieurs tableaux d'exemples
+
+=== Un exemple de Scenario Outline
+
+....
+Scenario Outline: eating
+  Given there are <start> cucumbers
+  When I eat <eat> cucumbers
+  Then I should have <left> cucumbers
+
+  Examples:
+    | start | eat | left |
+    |  12   |  5  |  7   |
+    |  20   |  5  |  15  |
+....
+
+=== Factoriser des étapes communes à différents scénarii
+
+* Comme le scénario et le scénario paramétré, le background n'est ni plus ni moins qu'une nouvelle description de scénario composée.
+* Le bloc Contexte sera joué systématiquement avant chaque scénario.
+
+=== Des scénarii, pour décrire une fonctionnalité !
+
+* Une feature est un groupement de plusieurs scénarios et/ou plans de scénario.
+
+=== Conventions
+
+* Un document rédigé en Gherkin doit respecter certaines conventions :
+** il doit être enregistré dans un fichier portant l'extension .feature
+** il ne peut contenir la description que d'une seule fonctionnalité (feature)
+
+=== !
+
+....
+Fonctionnalité: Servir un café
+   En tant qu'utilisateur
+   Je veux consommer un café
+   dont le prix fixe est de 40 centimes
+
+   Contexte:
+      Etant donné que j'ai inséré 40 centimes d'euros
+
+   Scénario: Servir un café court sans sucre
+      Quand je demande un "café court sans sucre"
+      Alors la machine me remplit un gobelet de "café court sans sucre"
+
+   Scénario: Servir un café court avec sucre quand je donne trop de monnaie
+      Etant donné que j'ai inséré 10 centimes d'euros
+      Quand je demande un "café court avec sucre"
+      Alors la machine me remplit un gobelet de "café court sans sucre"
+      Et la machine me rend 10 centimes d'euros
+....
+
+=== Des tags pour finir..
+
+* Les tags permettront par exemple de :
+** marquer le domaine fonctionnel que le scénario couvre
+** filtrer l'exécution de certains scénarii
+
+....
+@dashboard
+Feature: New Project
+
+Background:
+  Given I sign in as a user
+  And I own project "Shop"
+  And I visit dashboard page
+  And I click "New project" link
+
+  @javascript
+  Scenario: I should see New Projects page
+  Then I see "New Project" page
+  Then I see all possible import options
+....

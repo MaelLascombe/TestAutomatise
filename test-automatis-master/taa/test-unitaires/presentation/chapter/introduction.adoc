@@ -1,0 +1,19 @@
+[data-background="{title_bg}"]
+
+== Introduction
+
+Qui suis je ? 
+
+=== Déroulement du cours
+
+* N'hésitez pas à interrompre ou à intervenir
+* Merci de ne pas faire de bruit :)
+
+=== Le contrôle continu
+
+* Comment ? Un questionnaire à choix multiples
+* Quand ? La dernière heure avec Richard Liot
+
+=== Les sources
+
+* https://github.com/JMaillard/tests-automatises

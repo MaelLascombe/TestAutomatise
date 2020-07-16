@@ -1,0 +1,182 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url("fonts/futura-std.css");
+
+$SQLIColor: #EB285A;
+$noteColor: #a97024;
+$tipColor: #43A047;
+$cautionColor: #FF5722;
+$warningColor: #EF6C00;
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundImage: 'images/Bg_light_01.png';
+
+$mainColor: #000;
+$headingColor: $SQLIColor;
+
+$mainFontSize: 28px;
+$mainFont: 'FuturaStd', Helvetica, sans-serif;
+$headingFont: 'FuturaStd', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: $SQLIColor;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+@mixin bodyBackground() {
+	@include radial-gradient( rgba(247,242,211,1), rgba(255,255,255,1) );
+}
+
+.reveal {
+	section.has-light-background {
+		&, h1, h2, h3, h4, h5, h6 {
+			color: #222;
+		}
+	}
+	h1 {
+		font-size: 2.2em;
+	}
+	h2 {
+		margin-bottom: 30px;
+	}
+	p {
+		line-height: 1em;
+		margin: 10px 0;
+	}
+	// LOGO
+	&:after{
+		position: absolute;
+		bottom: 30px;
+		left: 20px;
+		z-index: 30;
+		height: 65px;
+		width: 200px;
+		background: url(images/SQLI_DX_LOGO_violet.png) no-repeat;
+		background-size: 120px;
+	}
+	pre {
+		padding: 5px;
+		border: 1px solid #eee;
+	}
+	.small {
+    font-size: 80% !important;
+	}
+	.big {
+    font-size: 120% !important;
+	}
+	.quoteblock blockquote {
+		box-sizing: border-box;
+		text-align: justify;
+		font-style: italic;
+		&:before {
+			font-family: "Serif";
+			content: "\201c";
+			float: left;
+			font-size: 2.75em;
+			font-weight: bold;
+			line-height: 0.6em;
+			margin-left: -0.6em;
+			color: $SQLIColor;
+			text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+		}
+	}
+	.admonitionblock {
+		margin: 1em 0;
+		font-size: 1.4rem;
+		.icon,
+		.content {
+			padding: .25em .5em;
+			border: 1px solid;
+			border-radius: 2px 2px 0 0;
+			vertical-align: top;
+		}
+		&.note {
+			.icon {
+				border-color: $noteColor;
+				color: $noteColor;
+			}
+			.content {
+				background-color: $noteColor;
+				border-color: $noteColor;
+				color: #fff;
+			}
+		}
+		&.tip {
+			.icon {
+				border-color: $tipColor;
+				color: $tipColor;
+			}
+			.content {
+				background-color: $tipColor;
+				border-color: $tipColor;
+				color: #fff;
+			}
+		}
+		&.important,
+		&.caution {
+			.icon {
+				border-color: $cautionColor;
+				color: $cautionColor;
+			}
+			.content {
+				background-color: $cautionColor;
+				border-color: $cautionColor;
+				color: #fff;
+			}
+		}
+		&.warning {
+			.icon {
+				border-color: $warningColor;
+				color: $warningColor;
+			}
+			.content {
+				background-color: $warningColor;
+				border-color: $warningColor;
+				color: #fff;
+			}
+		}
+	}
+	.imageblock img,
+	.image img {
+		border: none;
+		box-shadow: none;
+	}
+	table.tableblock {
+		table-layout: fixed;
+    font-size: .8em !important;
+		line-height: 1em !important;
+		td,
+		th {
+			padding: 0.2em 0.4em;
+			border-color: #ddd;
+		}
+		tr:nth-of-type(even) {
+			background: #edf2f2;
+		}
+		th {
+			padding-bottom: 15px;
+		}
+	}
+}

@@ -1,0 +1,95 @@
+[data-background="{title_bg}"]
+== Comment faciliter l’écriture de tests unitaires
+
+* Mockito est un framework Java, permettant :
+** de mocker ou espionner des objets,
+** simuler et vérifier des comportements,
+** ou encore simplifier l’écriture de tests unitaires.
+
+=== C'est quoi un mock ?
+
+image::images/mock.png[width=650]
+
+=== Approche Behavior Driven Development
+
+* En effet, il sera très intuitif d’écrire son test en suivant la notion //given //when //then, et nous verrons que Mockito met l’accent sur la 1ère et la 3ème notion.
+
+=== Greffer Mockito sur une classe JUnit
+
+2 possibilités :
+
+* Ajouter l’annotation @RunWith comme suivant :
+....
+@RunWith(MockitoJunitRunner.class)
+public class MyTestClass {
+
+}
+....
+* Ou à l’initialisation dans la méthode setUp()
+....
+@Before
+public void setUp() {
+    MockitoAnnotations.initMocks(this);
+}
+....
+
+=== Le stubbing
+
+Mockito est capable de stubber des classes concrètes mais aussi des interfaces.
+
+* On peut appeler la méthode mock sur une classe :
+....
+User user = Mockito.mock(User.class);
+....
+* Ou placer une annotation si la variable est en instance de classe
+....
+@Mock
+User user;
+....
+
+=== Définition du comportement des objets mockés ou « Stubbing »
+
+Retour d’une valeur unique
+....
+Mockito.when(user.getLogin()).thenReturn(‘user1’);
+....
+Faire appel à la méthode d’origine
+....
+Mockito.when(user.getLogin()).thenCallRealMethod();
+....
+Levée d’exceptions
+....
+Mockito.when(user.getLogin()).thenThrow(new RuntimeException());
+....
+
+=== Espionner un objet avec @Spy
+
+La différence entre "Mock" et "Spy" réside dans le fait que la deuxième permet d’instancier l’objet mocké
+
+....
+@Spy
+
+User user = new User(‘user1’);
+
+user.getLogin() // retourne user1
+....
+
+=== Vérification d’interactions @Verify
+
+....
+verify(user).getLogin();
+
+//le test passe si getLogin() est appelée avant la fin du timeout
+
+verify(mock, timeout(100)).getLogin();
+....
+
+=== Injection
+
+Mockito permet également d’injecter des ressources (classes nécessaires au fonctionnement de l’objet mocké), en utilisant l’annotation @InjectMock
+
+=== TP
+
+ouvrir le pdf tp/tp-mocks/tp-mocks.pdf
+
+image::images/tp.png[width=650]

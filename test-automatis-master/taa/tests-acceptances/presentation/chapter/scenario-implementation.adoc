@@ -1,0 +1,56 @@
+
+== Cucumber
+
+=== Une seule source de vérité
+
+* Cucumber fusionne la spécification et la documentation de test en un seul ensemble cohérent.
+
+=== Documentation vivante
+
+* Parce qu'ils sont automatiquement testés par Cucumber, vos spécifications sont toujours à jour.
+
+=== Cucumber et bdd
+
+image::images/bdd-cycle.png[width=550]
+
+* Illustration de Paul Rayner (Merci!)
+
+=== Mise en oeuvre
+
+* Indiquer à JUnit que vous voulez que votre classe de test soit lancé avec Cucumber :
+
+....
+@RunWith(Cucumber.class)
+public class MyServiceTest {
+
+}
+....
+
+=== Différentes options
+
+....
+@RunWith(Cucumber.class)
+@CucumberOptions(monochrome = true, features = { "features/" }, glue = { "com/rte/fenix/" }, plugin = {
+		"json:target/cucumber-json-report/cucumber.json", "pretty" })
+public class RunFenixAcceptanceTest {
+....
+
+=== !
+
+* Créer le fichier feature qui contiendra les scenarios de test.
+
+=== !
+
+* Cucumber vous demande alors d’implémenter les phrases présentes dans le scenario.
+* Il faut les mettre dans une nouvelle classe :
+
+....
+public class MyServiceSteps {
+
+....
+
+=== TP
+
+ouvrir le pdf tp/tp-cucumber/cucumber.pdf
+
+image::images/tp.png[width=650]
